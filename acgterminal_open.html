@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Terminal</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+    }
+    
+    #terminal {
+      height: 400px;
+      overflow: auto;
+      border: 1px solid #fff;
+      padding: 10px;
+    }
+    
+    #input-container {
+      display: flex;
+    }
+    
+    #input-container input {
+      flex: 1;
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      padding: 0 5px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal">
+    <div>Welcome to the Terminal!</div>
+  </div>
+
+  <div id="input-container">
+    <input id="command-input" type="text" placeholder="Enter a command" autofocus>
+  </div>
+
+  <script>
+    var terminal = document.getElementById("terminal");
+    var commandInput = document.getElementById("command-input");
+
+    commandInput.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        var command = commandInput.value.trim();
+        commandInput.value = "";
+
+        if (command) {
+          executeCommand(command);
+        }
+
+        event.preventDefault();
+      }
+    });
+
+    function executeCommand(command) {
+      var output = document.createElement("div");
+      output.textContent = "> " + command;
+      terminal.appendChild(output);
+
+      // Execute the command and get the result
+      var result = executeCommandAndGetResult(command);
+
+      var resultOutput = document.createElement("div");
+      resultOutput.textContent = result;
+      terminal.appendChild(resultOutput);
+
+      // Scroll to the bottom of the terminal
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    function executeCommandAndGetResult(command) {
+      // Here, you can define your own command execution logic
+      // You can use AJAX, fetch, or other methods to send the command to a server-side script and get the result
+      // For example, you can simulate the command execution by returning a predefined result based on the command
+
+      // Example command execution logic
+      if (command === "help") {
+        return "Available commands: \n- help: Show available commands \n- date: Get current date";
+      } else if (command === "date") {
+        return new Date().toLocaleString();
+      } else {
+        return "Command not found. Type 'help' to see available commands.";
+      }
+    }
+  </script>
+</body>
+</html>
