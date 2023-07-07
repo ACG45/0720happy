@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      width: 350px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 5px solid #39affd;
+      border-radius: 5px;
+    }
+    
+    .container h2 {
+      text-align: center;
+    }
+    
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 93%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 2px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #272bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><img src="http://www.microimage.co.kr/layouts/default/_var/logo.jpg" alt="Login Image"></h2>
+    <form onsubmit="checkCredentials(event)">
+      <input type="text" placeholder="customer name" name="username" required>
+      <input type="password" placeholder="password" name="password" required>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <script>
+    function checkCredentials(event) {
+      event.preventDefault(); // 폼 제출 기본 동작 중지
+
+      var username = document.querySelector('input[name="username"]').value;
+      var password = document.querySelector('input[name="password"]').value;
+
+      if (username === "mimage" && password === "microp@ssw0rd") {
+        window.location.href = "C:/Users/MIR-DP2/python test/.vscode/html/test.mi/acgmain.html";
+      } else {
+        alert("아이디와 비밀번호를 확인하세요.");
+      }
+    }
+  </script>
+
+  <p style="text-align: center;">"테스트 페이지입니다"</p>ody>
+</html>
